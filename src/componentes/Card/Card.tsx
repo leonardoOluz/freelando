@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 
 const DivEstilizada = styled.div`   
-  padding: 32px;
-  background-color: #EBEAF9;
-  border: 1px solid #5754ED;
-  border-radius: 16px;
+  padding: ${({ theme }) => theme.espacamentos.l};
+  background-color: ${({ theme }) => theme.cores.secundarias.a};
+  border: 1px solid ;
+  border-color: ${({ theme }) => theme.cores.primarias.a};
+  border-radius: ${({ theme }) => theme.espacamentos.s};
 `;
 
 interface PropsCard {

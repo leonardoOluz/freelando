@@ -1,13 +1,14 @@
 import { Card } from "./componentes/Card/Card"
 import { Estilos } from "./componentes/EstilosGlobais/Estilos"
+import { ProvedorTema } from "./componentes/ProvedorTema/ProvedorTema"
 
 function App() {
-  return (<div>
+  return (<ProvedorTema>
     <Estilos />
     <Card>
       <h1>Freelando</h1>
     </Card>
-  </div>)
+  </ProvedorTema>)
 }
 
 export default App
