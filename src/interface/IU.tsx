@@ -3,7 +3,6 @@ export interface IU {
     espacamentos: IEspacamentos;
     fontFamily: string;
 }
-
 export interface ICores {
     atencao: string;
     focus: string;
@@ -32,7 +31,6 @@ export interface INeutras {
     b: string,
     c: string,
 }
-
 export interface IEspacamentos {
     xxs: string;
     xs: string;

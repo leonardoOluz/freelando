@@ -5,6 +5,10 @@ interface IComponentes {
   h2: string;
   h3: string;
   body: string;
+  bodyBold: string;
+  body2: string;
+  body2Bold: string;
+  legenda: string;
 }
 
 interface IEstilos {
@@ -12,7 +16,10 @@ interface IEstilos {
   h2: string;
   h3: string;
   body: string;
+  bodyBold: string;
   body2: string;
+  body2Bold: string;
+  legenda: string;
   subtititle1: string;
   subtititle2: string;
 }
@@ -31,7 +38,11 @@ const componentes: IComponentes = {
   h1: "h1",
   h2: "h2",
   h3: "h3",
-  body: "p"
+  body: "p",
+  bodyBold: 'strong',
+  body2: 'p',
+  body2Bold: 'strong',
+  legenda: 'p'
 }
 
 const estilos: IEstilos = {
@@ -57,11 +68,26 @@ const estilos: IEstilos = {
     font-weight: 400;
     line-height: 2.4rem;
   `,
+  bodyBold: `
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 2.4rem;
+`,
   body2: `
     font-size: 1.6rem;
     font-weight: 400;
     line-height: 2rem;
   `,
+  body2Bold: `
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 2rem;
+`,
+  legenda: `
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.7rem;
+`,
   subtititle1: `
     font-size: 1.4rem;
     font-weight: 400;
@@ -73,7 +99,6 @@ const estilos: IEstilos = {
     line-height: 1.7rem;
     text-decoration: underline;
   `,
-
 }
 
 export const Tipografia = ({ variante, componente, children }: PropsTipografia) => {
