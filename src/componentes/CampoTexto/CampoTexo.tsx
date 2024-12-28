@@ -14,6 +14,7 @@ const InputEstilizada = styled.input`
     width: 100%;
     box-sizing: border-box;
     margin-top: ${({ theme }) => theme.espacamentos.xs};
+    margin-bottom: ${({ theme }) => theme.espacamentos.s};
     background-color: ${({ theme }) => theme.cores.branco};
     border: .1rem solid;
     border-color: ${({ theme }) => theme.cores.neutras.a};
