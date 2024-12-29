@@ -1,5 +1,8 @@
 import styled from "@emotion/styled"
 import { useState } from "react"
+import { IEstadosBrasileiros } from "../../interface/IU";
+import { ListaOpcoes } from "../ListaOpcoes/ListaOpcoes";
+import { ItemOpcao } from "../ItemOpcao/ItemOpcao";
 
 const LabelEstilizado = styled.label`
   display: block;
@@ -34,18 +37,61 @@ const BotaoEstilizado = styled.button<{ estaAberta: boolean }>`
 `;
 
 interface PropsListaSuspensa {
-  titulo: string
+  titulo: string;
+  opcoes: Array<IEstadosBrasileiros>
 }
 
-export const ListaSuspensa = ({ titulo }: PropsListaSuspensa) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false)
+export const ListaSuspensa = ({ titulo, opcoes }: PropsListaSuspensa) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [focoAtivo, setFocoAtivo] = useState<number | null>(null);
+
+  const manipularTeclaDoTeclado = (evento: React.KeyboardEvent<HTMLButtonElement>) => {
+    setIsOpen(true)
+    console.log(focoAtivo)
+    switch (evento.key) {
+      case "ArrowDown":
+        evento.preventDefault();
+        setFocoAtivo(focoAntigo => {
+          if (focoAntigo == null) {
+            return 0
+          }
+          if (focoAntigo >= opcoes.length - 1) {
+            return 0
+          }
+          return focoAntigo += 1
+        })
+        break;
+      case "ArrowUp":
+        evento.preventDefault();
+        setFocoAtivo(focoAntigo => {
+          if (focoAntigo == null) {
+            return opcoes.length - 1
+          }
+          if (focoAntigo <= 0) {
+            return opcoes.length - 1
+          }
+          return focoAntigo -= 1
+        })
+        break;
+      default:
+        break;
+    }
+  }
 
   return (<LabelEstilizado>
     {titulo}
     <BotaoEstilizado
       estaAberta={isOpen}
+      onKeyDown={manipularTeclaDoTeclado}
       onClick={() => setIsOpen(!isOpen)}>
       Selecione <span>{isOpen ? '▲' : '▼'}</span>
     </BotaoEstilizado>
+    {isOpen && <ListaOpcoes>
+      {opcoes.map((opcao, index) => <ItemOpcao
+        focoAtivo={focoAtivo === index}
+        key={opcao.value}
+        texto={opcao.text}
+      />)}
+    </ListaOpcoes>}
   </LabelEstilizado>)
 }
