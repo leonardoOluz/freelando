@@ -18,10 +18,11 @@ const ItemOpcaoEstilizada = styled.li<{ focoAtivo: boolean }>`
 interface PropsItemOpcao {
   texto: string;
   focoAtivo: boolean;
+  onClick: () => void;
 }
 
-export const ItemOpcao = ({ texto, focoAtivo }: PropsItemOpcao) => {
-  return (<ItemOpcaoEstilizada focoAtivo={focoAtivo}>
+export const ItemOpcao = ({ texto, focoAtivo, onClick }: PropsItemOpcao) => {
+  return (<ItemOpcaoEstilizada focoAtivo={focoAtivo} onClick={onClick}>
     {texto}
   </ItemOpcaoEstilizada>)
 }

@@ -3,6 +3,7 @@ import styled from "@emotion/styled"
 const ListaOpcoesEstilizada = styled.ul`
   position: absolute;
   top: 50px;
+  width: 100%;
   z-index: 1;
   padding: 0 ;
   text-align: center;
@@ -20,5 +21,5 @@ interface PropsListaOpcoes {
 }
 
 export const ListaOpcoes = ({ children }: PropsListaOpcoes) => {
-  return (<ListaOpcoesEstilizada tabIndex={0}>{children}</ListaOpcoesEstilizada>)
+  return (<ListaOpcoesEstilizada>{children}</ListaOpcoesEstilizada>)
 }

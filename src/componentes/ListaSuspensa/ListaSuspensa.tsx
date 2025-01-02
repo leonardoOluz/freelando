@@ -44,18 +44,18 @@ interface PropsListaSuspensa {
 export const ListaSuspensa = ({ titulo, opcoes }: PropsListaSuspensa) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [focoAtivo, setFocoAtivo] = useState<number | null>(null);
+  const [focoSelecionado, setFocoSelecionado] = useState<string | null>();
 
   const manipularTeclaDoTeclado = (evento: React.KeyboardEvent<HTMLButtonElement>) => {
-    setIsOpen(true)
-    console.log(focoAtivo)
     switch (evento.key) {
       case "ArrowDown":
         evento.preventDefault();
+        setIsOpen(true)
         setFocoAtivo(focoAntigo => {
           if (focoAntigo == null) {
             return 0
           }
-          if (focoAntigo >= opcoes.length - 1) {
+          if (focoAntigo >= (opcoes.length - 1)) {
             return 0
           }
           return focoAntigo += 1
@@ -63,6 +63,7 @@ export const ListaSuspensa = ({ titulo, opcoes }: PropsListaSuspensa) => {
         break;
       case "ArrowUp":
         evento.preventDefault();
+        setIsOpen(true)
         setFocoAtivo(focoAntigo => {
           if (focoAntigo == null) {
             return opcoes.length - 1
@@ -72,6 +73,23 @@ export const ListaSuspensa = ({ titulo, opcoes }: PropsListaSuspensa) => {
           }
           return focoAntigo -= 1
         })
+        break;
+      case "Enter":
+        evento.preventDefault();
+        if (focoAtivo) {
+          setFocoSelecionado(opcoes[focoAtivo].text)
+          setFocoAtivo(null)
+          setIsOpen(false)
+        }
+        break;
+      case "Escape":
+        evento.preventDefault();
+        setFocoAtivo(null)
+        setIsOpen(false)
+        break;
+      case "Tab":
+        setIsOpen(false)
+        setFocoAtivo(null)
         break;
       default:
         break;
@@ -84,13 +102,15 @@ export const ListaSuspensa = ({ titulo, opcoes }: PropsListaSuspensa) => {
       estaAberta={isOpen}
       onKeyDown={manipularTeclaDoTeclado}
       onClick={() => setIsOpen(!isOpen)}>
-      Selecione <span>{isOpen ? '▲' : '▼'}</span>
+      {focoSelecionado ? focoSelecionado : 'Selecione'}
+      <span>{isOpen ? '▲' : '▼'}</span>
     </BotaoEstilizado>
     {isOpen && <ListaOpcoes>
       {opcoes.map((opcao, index) => <ItemOpcao
         focoAtivo={focoAtivo === index}
         key={opcao.value}
         texto={opcao.text}
+        onClick={() => setFocoSelecionado(opcao.text)}
       />)}
     </ListaOpcoes>}
   </LabelEstilizado>)
