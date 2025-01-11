@@ -54,8 +54,7 @@ const estilos: IEstilos = {
   h2: `
     font-size: 3.2rem;
     font-weight: 600;
-    line-height: 3.9rem;
-    
+    line-height: 3.9rem;    
   `,
   h3: `
     font-size: 2.4rem;
