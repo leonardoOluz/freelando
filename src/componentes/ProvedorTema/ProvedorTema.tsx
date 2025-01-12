@@ -39,7 +39,7 @@ const tema: IU = {
         xl: "4.8rem",
         xxl: "6.4rem",
     },
-    fontFamily: "Montserrat, serif"
+    fontFamily: "Montserrat, sans-serif"
 }
 
 export const ProvedorTema = ({ children }: PropsProvedorTema) => {
