@@ -4,6 +4,7 @@ import LayoutBaseCadastro from "../Pages/cadastro/LayoutBaseCadastro";
 import LayoutBase from "../Pages/LayoutBase";
 import Interesses from "../Pages/cadastro/Interesses";
 import DadosPessoais from "../Pages/cadastro/DadosPessoais";
+import Concluido from "../Pages/cadastro/Concluido";
 
 export const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "concluido",
-            element: <h1>cadastro concluido</h1>
+            element: <Concluido/>
           }
         ]
       }
