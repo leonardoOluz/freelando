@@ -18,11 +18,9 @@ const Concluido = () => {
     <Tipografia componente="body" variante="body">
       Agora é só começar a se conectar com os melhores freelancers do mercado!
     </Tipografia>
-    <Row>
-      <Col sm={12} md={12}>
-        <ImagemEstilizada src={concluido} alt="" />
-      </Col>
-    </Row>
+    <figure>
+      <ImagemEstilizada src={concluido} alt="" />
+    </figure>
     <Row>
       <Col md={12} sm={12}>
         <Link to="..">
