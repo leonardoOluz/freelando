@@ -45,3 +45,8 @@ export interface IEstadosBrasileiros {
   text: string,
   value: string
 }
+
+export interface IOpcoes {
+  valor: number;
+  label: string;
+}
