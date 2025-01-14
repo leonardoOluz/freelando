@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import { IOpcoes } from "../../interface/IU";
 import GrupoBotaoRadio from "../../componentes/GrupoBotaoRadio/GrupoBotaoRadio";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const opcoes: IOpcoes[] = [
@@ -33,8 +34,6 @@ const opcoes: IOpcoes[] = [
     label: 'Marketing',
   },
 ]
-
-// const InputRadioEstilizado = styled.input`
 //   appearance: none;
 //   opacity: 0;
 
@@ -77,7 +76,7 @@ const LegendEstilizado = styled.legend`
 `;
 
 const Interesses = () => {
-  const [opcao, setOpcao] = useState<number>(1);
+  const [opcao, setOpcao] = useState<number>(0);
 
   return (<div style={{ textAlign: "center" }}>
     <Tipografia variante="h2" componente="h1">
@@ -98,12 +97,16 @@ const Interesses = () => {
     <Row>
       <Col md={6} sm={6}>
         <div style={{ textAlign: "left" }}>
-          <Botao variante="secundaria" children="Anterior" />
+          <Link to="..">
+            <Botao variante="secundaria" children="Anterior" />
+          </Link>
         </div>
       </Col>
       <Col md={6} sm={6}>
         <div style={{ textAlign: "right" }}>
-          <Botao variante="primaria" children="Próximo" />
+          <Link to="/cadastro/dados-pessoais">
+            <Botao variante="primaria" children="Próximo" />
+          </Link>
         </div>
       </Col>
     </Row>
