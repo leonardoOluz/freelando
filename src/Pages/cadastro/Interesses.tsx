@@ -1,11 +1,11 @@
 import { Col, Row } from "react-grid-system";
-import { Tipografia } from "../../componentes/Tipografia/Tipografia";
 import { Botao } from "../../componentes/Botao/Botao";
 import styled from "@emotion/styled";
 import { IOpcoes } from "../../interface/IU";
 import GrupoBotaoRadio from "../../componentes/GrupoBotaoRadio/GrupoBotaoRadio";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
 
 
 const opcoes: IOpcoes[] = [
@@ -71,26 +71,13 @@ const FieldsetEstilizado = styled.fieldset`
   padding: 0 0 3rem 0;  
 `;
 
-const LegendEstilizado = styled.legend`
-  
-`;
-
 const Interesses = () => {
   const [opcao, setOpcao] = useState<number>(0);
 
-  return (<div style={{ textAlign: "center" }}>
-    <Tipografia variante="h2" componente="h1">
-      Crie seu cadastro
-    </Tipografia>
+  return (<div>
+    <TipografiaCard titulo="Crie seu cadastro" subTitulo="Qual a área de interesse?" />
     <Row>
-      <FieldsetEstilizado>
-        <Col md={12} sm={12}>
-          <LegendEstilizado>
-            <Tipografia componente="h2" variante="h3" >
-              Qual a área de interesse?
-            </Tipografia>
-          </LegendEstilizado>
-        </Col>
+      <FieldsetEstilizado aria-label="Opções de Interesses">
         <GrupoBotaoRadio opcoes={opcoes} nome="opcao" onChange={setOpcao} valor={opcao} />
       </FieldsetEstilizado>
     </Row>
