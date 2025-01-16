@@ -1,9 +1,9 @@
 import { Col, Row } from "react-grid-system";
-import { Tipografia } from "../../componentes/Tipografia/Tipografia";
 import concluido from "./assets/Rectangle 6.png"
 import styled from "@emotion/styled";
 import { Botao } from "../../componentes/Botao/Botao";
 import { Link } from "react-router-dom";
+import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
 
 const ImagemEstilizada = styled.img`
     width: 100%;
@@ -11,17 +11,13 @@ const ImagemEstilizada = styled.img`
 `;
 
 const Concluido = () => {
-  return (<div style={{ textAlign: "center" }}>
-    <Tipografia variante="h1" componente="h1">
-      Seu perfil está completo!
-    </Tipografia>
-    <Tipografia componente="body" variante="body">
-      Agora é só começar a se conectar com os melhores freelancers do mercado!
-    </Tipografia>
+  return (<div>
+    <TipografiaCard titulo="Seu perfil está completo!" descricao="  Agora é só começar a se conectar com os melhores freelancers do mercado!
+    "/>
     <figure>
       <ImagemEstilizada src={concluido} alt="" />
     </figure>
-    <Row>
+    <Row style={{ textAlign: "center" }}>
       <Col md={12} sm={12}>
         <Link to="..">
           <Botao variante="secundaria" children="Voltar para a home" />

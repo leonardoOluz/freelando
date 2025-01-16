@@ -1,10 +1,10 @@
 import { Col, Row } from "react-grid-system";
-import { Tipografia } from "../../componentes/Tipografia/Tipografia";
 import { Botao } from "../../componentes/Botao/Botao";
 import { Link } from "react-router-dom";
 import { CampoTexto } from "../../componentes/CampoTexto/CampoTexo";
 import { ListaSuspensa } from "../../componentes/ListaSuspensa/ListaSuspensa";
 import { IEstadosBrasileiros } from "../../interface/IU";
+import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
 
 const estadosBrasileiros: IEstadosBrasileiros[] = [
   { "text": "Acre", "value": "AC" },
@@ -39,16 +39,8 @@ const estadosBrasileiros: IEstadosBrasileiros[] = [
 const DadosPessoais = () => {
 
   return (<div>
-    <div style={{ textAlign: "center" }}>
-      <Tipografia variante="h1" componente="h1">
-        Freelando
-      </Tipografia>
-
-      <Tipografia componente="body" variante="body">
-        Crie seu perfil gratuitamente para começar a trabalhar com os melhores freelancers. Em seguida, você poderá dar mais detalhes sobre suas demandas e sobre sua forma de trabalho.
-      </Tipografia>
-    </div>
-
+    <TipografiaCard titulo="Freelando" descricao=" Crie seu perfil gratuitamente para começar a trabalhar com os melhores freelancers. Em seguida, você poderá dar mais detalhes sobre suas demandas e sobre sua forma de trabalho.
+      "/>
     <Row>
       <Col>
         <CampoTexto titulo="Nome Completo" />

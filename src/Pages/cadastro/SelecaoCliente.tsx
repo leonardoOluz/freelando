@@ -4,15 +4,11 @@ import imgCLiente from "./assets/cliente.png";
 import imgFreela from "./assets/freela.png";
 import { Link } from "../../componentes/Link/Link";
 import { Link as RouterLink } from "react-router-dom";
+import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
 
 const SelecaoCliente = () => {
-  return (<div style={{ textAlign: "center" }}>
-    <Tipografia variante="h2" componente="h1">
-      Crie seu cadastro
-    </Tipografia>
-    <Tipografia variante="h3" componente="h2">
-      Como podemos te ajudar?
-    </Tipografia>
+  return (<div>
+    <TipografiaCard titulo="Crie seu cadastro" subTitulo="Como podemos te ajudar?" />
     <Row>
       <Col md={6} sm={12}>
         <RouterLink to="interesses">
@@ -29,7 +25,7 @@ const SelecaoCliente = () => {
         </Tipografia>
       </Col>
     </Row>
-    <div>
+    <div style={{ textAlign: "center" }}>
       <Tipografia componente="body2" variante="body2">Já tem conta?</Tipografia>
       <p>
         <Link variante="secundario">
