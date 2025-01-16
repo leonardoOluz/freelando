@@ -3,9 +3,9 @@ import { Botao } from "../../componentes/Botao/Botao";
 import styled from "@emotion/styled";
 import { IOpcoes } from "../../interface/IU";
 import GrupoBotaoRadio from "../../componentes/GrupoBotaoRadio/GrupoBotaoRadio";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
+import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
 
 
 const opcoes: IOpcoes[] = [
@@ -34,36 +34,6 @@ const opcoes: IOpcoes[] = [
     label: 'Marketing',
   },
 ]
-//   appearance: none;
-//   opacity: 0;
-
-//   &:checked ~ span {
-//     border-radius: 16px;
-//     border: 1px solid;
-//     border-color: ${props => props.theme.cores.focus};
-//     background-color: ${({ theme }) => theme.cores.primarias.b};
-//   }
-// `;
-
-// const LabelEstilizada = styled.label`
-//   display: flex;
-//   align-items: center;
-//   gap: 1rem;
-//   padding: 1rem 0;
-//   cursor: pointer;
-// `;
-
-// const SpanEstilizado = styled.span`
-//   border-radius: 50%;
-//   width: 2rem;
-//   height: 2rem;
-//   border: 2px solid;
-//   border-color: ${({ theme }) => theme.cores.neutras.a};
-
-//     &:hover{
-//       border-color: ${({ theme }) => theme.cores.focus};
-//     }
-// `;
 
 const FieldsetEstilizado = styled.fieldset`
   border: none;
@@ -72,13 +42,18 @@ const FieldsetEstilizado = styled.fieldset`
 `;
 
 const Interesses = () => {
-  const [opcao, setOpcao] = useState<number>(0);
+  const { setInteresse, usuario } = useCadastroUsuarioContext();
 
   return (<div>
     <TipografiaCard titulo="Crie seu cadastro" subTitulo="Qual a área de interesse?" />
     <Row>
       <FieldsetEstilizado aria-label="Opções de Interesses">
-        <GrupoBotaoRadio opcoes={opcoes} nome="opcao" onChange={setOpcao} valor={opcao} />
+        <GrupoBotaoRadio
+          opcoes={opcoes}
+          nome="opcao"
+          onChange={setInteresse}
+          valor={usuario.interesse}
+        />
       </FieldsetEstilizado>
     </Row>
     <Row>

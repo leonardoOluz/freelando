@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-
 const LabelEstilizada = styled.label`  
     display: block;
     width: 100%;
@@ -23,15 +22,23 @@ const InputEstilizada = styled.input`
     font-size: 1.4rem;
     font-weight: 400;
     line-height: 1.7rem;
+    padding: 0 1rem;
 `;
 
 interface PropsCampoTexto {
   titulo: string;
+  valor: string;
+  onChange: (value: string) => void;
+  tipo?: string
 }
 
-export const CampoTexto = ({ titulo }: PropsCampoTexto) => {
+export const CampoTexto = ({ titulo, valor, onChange, tipo = "text" }: PropsCampoTexto) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onChange(e.target.value);
+  }
+
   return (<LabelEstilizada>
     {titulo}
-    <InputEstilizada />
+    <InputEstilizada value={valor} onChange={handleChange} type={tipo} required/>
   </LabelEstilizada>)
 };

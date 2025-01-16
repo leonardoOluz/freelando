@@ -1,6 +1,6 @@
 import { createContext } from "react";
-import { IUsuario } from "./CadastroUsuario";
 import { usuarioInicial } from "./usuarioInicial";
+import { IUsuario } from "../interface/IU";
 
 export const CadastroUsuarioContext = createContext<{
   usuario: IUsuario;

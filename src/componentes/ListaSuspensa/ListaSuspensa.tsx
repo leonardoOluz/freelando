@@ -39,9 +39,10 @@ const BotaoEstilizado = styled.button<{ estaAberta: boolean }>`
 interface PropsListaSuspensa {
   titulo: string;
   opcoes: Array<IEstadosBrasileiros>
+  handleChange: (e: string) => void
 }
 
-export const ListaSuspensa = ({ titulo, opcoes }: PropsListaSuspensa) => {
+export const ListaSuspensa = ({ titulo, opcoes, handleChange }: PropsListaSuspensa) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [focoAtivo, setFocoAtivo] = useState<number | null>(null);
   const [focoSelecionado, setFocoSelecionado] = useState<string | null>();
@@ -110,7 +111,10 @@ export const ListaSuspensa = ({ titulo, opcoes }: PropsListaSuspensa) => {
         focoAtivo={focoAtivo === index}
         key={opcao.value}
         texto={opcao.text}
-        onClick={() => setFocoSelecionado(opcao.text)}
+        onClick={() => {
+          setFocoSelecionado(opcao.text)
+          handleChange(opcao.text)
+        }}
       />)}
     </ListaOpcoes>}
   </LabelEstilizado>)

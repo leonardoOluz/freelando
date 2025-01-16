@@ -1,4 +1,4 @@
-import { IUsuario } from "./CadastroUsuario";
+import { IUsuario } from "../interface/IU";
 
 export const usuarioInicial: IUsuario = {
   cidade: "",

@@ -40,13 +40,21 @@ export interface IEspacamentos {
   xl: string;
   xxl: string;
 }
-
 export interface IEstadosBrasileiros {
   text: string,
   value: string
 }
-
 export interface IOpcoes {
   valor: number;
   label: string;
+}
+export interface IUsuario {
+  perfil: string;
+  interesse: string;
+  nomeCompleto: string;
+  uf: string;
+  cidade: string;
+  email: string;
+  senha: string;
+  senhaConfirmada: string;
 }
