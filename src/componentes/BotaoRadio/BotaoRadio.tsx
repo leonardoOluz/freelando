@@ -45,14 +45,13 @@ const LabelEstilizada = styled.label<{ $checked: boolean }>`
 // `;
 
 interface PropsBotaoRadio {
-  label: string;
-  valor: number;
+  valor: string;
   nome: string;
   onClick?: React.ChangeEventHandler<HTMLInputElement>;
   checked: boolean;
 }
 
-const BotaoRadio = ({ label, valor, nome, checked, onClick }: PropsBotaoRadio) => {
+const BotaoRadio = ({ valor, nome, checked, onClick }: PropsBotaoRadio) => {
   return (<LabelEstilizada $checked={checked} htmlFor={`radio-customizado-${valor}`}>
     <InputRadioEstilizado
       id={`radio-customizado-${valor}`}
@@ -61,7 +60,7 @@ const BotaoRadio = ({ label, valor, nome, checked, onClick }: PropsBotaoRadio) =
       type="radio"
       onChange={onClick}
     />
-    {label}
+    {valor}
   </LabelEstilizada>)
 };
 

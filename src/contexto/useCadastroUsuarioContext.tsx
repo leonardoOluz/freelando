@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useContext } from "react"
 import { CadastroUsuarioContext } from "./CadastroUsuarioContext"
 
 export const useCadastroUsuarioContext = () => {
-    return useState(CadastroUsuarioContext)
+    return useContext(CadastroUsuarioContext)
 }

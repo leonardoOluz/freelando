@@ -5,13 +5,16 @@ import imgFreela from "./assets/freela.png";
 import { Link } from "../../componentes/Link/Link";
 import { Link as RouterLink } from "react-router-dom";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
+import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
 
 const SelecaoCliente = () => {
+  const { setPerfil } = useCadastroUsuarioContext();
+  
   return (<div>
     <TipografiaCard titulo="Crie seu cadastro" subTitulo="Como podemos te ajudar?" />
     <Row>
       <Col md={6} sm={12}>
-        <RouterLink to="interesses">
+        <RouterLink to="interesses" onClick={() => setPerfil("cliente")}>
           <img src={imgCLiente} alt="cliente com o punha da mão no queixo e o cotovelo para baixo apoiando sobre algo não visivel" />
           <Tipografia variante="body" componente="body">
             Sou cliente e preciso de um freela!

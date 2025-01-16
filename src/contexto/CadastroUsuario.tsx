@@ -1,17 +1,8 @@
 import { useState } from "react";
 import { CadastroUsuarioContext } from "./CadastroUsuarioContext";
 import { usuarioInicial } from "./usuarioInicial";
+import { IUsuario } from "../interface/IU";
 
-export interface IUsuario {
-  perfil: string;
-  interesse: string;
-  nomeCompleto: string;
-  uf: string;
-  cidade: string;
-  email: string;
-  senha: string;
-  senhaConfirmada: string;
-}
 
 interface PropsCadastroUsuarioProvider {
   children: React.ReactNode

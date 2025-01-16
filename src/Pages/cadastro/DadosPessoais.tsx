@@ -5,6 +5,7 @@ import { CampoTexto } from "../../componentes/CampoTexto/CampoTexo";
 import { ListaSuspensa } from "../../componentes/ListaSuspensa/ListaSuspensa";
 import { IEstadosBrasileiros } from "../../interface/IU";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
+import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
 
 const estadosBrasileiros: IEstadosBrasileiros[] = [
   { "text": "Acre", "value": "AC" },
@@ -37,37 +38,57 @@ const estadosBrasileiros: IEstadosBrasileiros[] = [
 ]
 
 const DadosPessoais = () => {
+  const { usuario, setNomeCompleto, setEmail, setCidade, setSenha, setSenhaConfirmada, setUf } = useCadastroUsuarioContext();
 
   return (<div>
     <TipografiaCard titulo="Freelando" descricao=" Crie seu perfil gratuitamente para começar a trabalhar com os melhores freelancers. Em seguida, você poderá dar mais detalhes sobre suas demandas e sobre sua forma de trabalho.
       "/>
     <Row>
       <Col>
-        <CampoTexto titulo="Nome Completo" />
+        <CampoTexto
+          valor={usuario.nomeCompleto}
+          onChange={setNomeCompleto}
+          titulo="Nome Completo"
+        />
       </Col>
     </Row>
 
     <Row>
       <Col lg={4} md={4} sm={4}>
-        <ListaSuspensa titulo="Estado" opcoes={estadosBrasileiros} />
+        <ListaSuspensa handleChange={setUf} titulo="Estado" opcoes={estadosBrasileiros} />
       </Col>
       <Col lg={8} md={8} sm={8}>
-        <CampoTexto titulo="Cidade" />
+        <CampoTexto
+          titulo="Cidade"
+          valor={usuario.cidade}
+          onChange={setCidade}
+        />
       </Col>
     </Row>
 
     <Row>
       <Col>
-        <CampoTexto titulo="E-mail" />
+        <CampoTexto
+          valor={usuario.email}
+          onChange={setEmail}
+          titulo="E-mail"
+          tipo="email" 
+          />
       </Col>
     </Row>
 
     <Row>
       <Col lg={6} md={6} sm={6}>
-        <CampoTexto titulo="Senha" />
+        <CampoTexto
+          valor={usuario.senha}
+          onChange={setSenha}
+          titulo="Senha" />
       </Col>
       <Col lg={6} md={6} sm={6}>
-        <CampoTexto titulo="Repita a Senha" />
+        <CampoTexto
+          valor={usuario.senhaConfirmada}
+          onChange={setSenhaConfirmada}
+          titulo="Repita a Senha" />
       </Col>
     </Row>
 
