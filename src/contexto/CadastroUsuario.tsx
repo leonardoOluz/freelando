@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CadastroUsuarioContext } from "./CadastroUsuarioContext";
 import { usuarioInicial } from "./usuarioInicial";
 import { IUsuario } from "../interface/IU";
+import { useNavigate } from "react-router-dom";
 
 
 interface PropsCadastroUsuarioProvider {
@@ -9,6 +10,7 @@ interface PropsCadastroUsuarioProvider {
 }
 export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvider) => {
   const [usuario, setUsuario] = useState<IUsuario>(usuarioInicial)
+  const navegar = useNavigate();
 
   const setPerfil = (perfil: string) => {
     setUsuario((prev) => {
@@ -82,6 +84,12 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
     })
   }
 
+  const submeterUsuario = () => {
+    console.log(usuario);
+    navegar("/cadastro/concluido");
+    setUsuario(usuarioInicial)
+  }
+
   const contexto = {
     usuario,
     setPerfil,
@@ -91,7 +99,8 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
     setCidade,
     setEmail,
     setSenha,
-    setSenhaConfirmada
+    setSenhaConfirmada,
+    submeterUsuario
   }
 
   return (

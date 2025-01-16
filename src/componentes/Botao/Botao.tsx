@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 interface PropsBotao {
   children: React.ReactNode;
   variante: 'primaria' | 'secundaria';
+  tipo?: "button" | "submit";
 };
 
 const BotaoPrimarioEstilizado = styled.button`
@@ -27,10 +28,10 @@ const BotaoPrimarioEstilizado = styled.button`
 `;
 const BotaoSecundarioEstilizado = styled.button`
     background: transparent;
-    color: ${({theme}) => theme.cores.primarias.b};
-    border: 2px solid ${({theme}) => theme.cores.primarias.b};
-    border-radius: ${({theme}) => theme.espacamentos.s};
-    padding: ${({theme}) => theme.espacamentos.xs} ${({theme}) => theme.espacamentos.s};
+    color: ${({ theme }) => theme.cores.primarias.b};
+    border: 2px solid ${({ theme }) => theme.cores.primarias.b};
+    border-radius: ${({ theme }) => theme.espacamentos.s};
+    padding: ${({ theme }) => theme.espacamentos.xs} ${({ theme }) => theme.espacamentos.s};
     box-sizing: border-box;
     font-weight: 700;
     font-size: 16px;
@@ -39,17 +40,17 @@ const BotaoSecundarioEstilizado = styled.button`
     cursor: pointer;
 
     &:hover {
-        border-color: ${({theme}) => theme.cores.dark.b};
-        color: ${({theme}) => theme.cores.dark.b};
+        border-color: ${({ theme }) => theme.cores.dark.b};
+        color: ${({ theme }) => theme.cores.dark.b};
     }
     &:focus {
-        outline-color: ${({theme}) => theme.cores.focus};
+        outline-color: ${({ theme }) => theme.cores.focus};
     }
 `;
 
-export const Botao = ({ children, variante = 'primaria' }: PropsBotao) => {
+export const Botao = ({ children, variante = 'primaria', tipo = "button" }: PropsBotao) => {
   if (variante === 'primaria') {
-    return <BotaoPrimarioEstilizado>
+    return <BotaoPrimarioEstilizado type={tipo}>
       {children}
     </BotaoPrimarioEstilizado>
   }
