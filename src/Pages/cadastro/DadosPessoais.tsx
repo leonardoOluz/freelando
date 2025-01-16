@@ -38,9 +38,16 @@ const estadosBrasileiros: IEstadosBrasileiros[] = [
 ]
 
 const DadosPessoais = () => {
-  const { usuario, setNomeCompleto, setEmail, setCidade, setSenha, setSenhaConfirmada, setUf } = useCadastroUsuarioContext();
+  const { usuario, setNomeCompleto, setEmail, setCidade,
+    setSenha, setSenhaConfirmada, setUf, submeterUsuario } = useCadastroUsuarioContext();
 
-  return (<div>
+  const finalizarCadastro = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    submeterUsuario();
+  }
+
+
+  return (<form onSubmit={finalizarCadastro}>
     <TipografiaCard titulo="Freelando" descricao=" Crie seu perfil gratuitamente para começar a trabalhar com os melhores freelancers. Em seguida, você poderá dar mais detalhes sobre suas demandas e sobre sua forma de trabalho.
       "/>
     <Row>
@@ -72,8 +79,8 @@ const DadosPessoais = () => {
           valor={usuario.email}
           onChange={setEmail}
           titulo="E-mail"
-          tipo="email" 
-          />
+          tipo="email"
+        />
       </Col>
     </Row>
 
@@ -100,14 +107,16 @@ const DadosPessoais = () => {
       </Col>
       <Col lg={6} md={6} sm={6}>
         <div style={{ textAlign: 'right' }}>
-          <Link to="/cadastro/concluido">
-            <Botao variante="primaria">Proximo</Botao>
-          </Link>
+          {/* <Link to="/cadastro/concluido"> */}
+          <Botao variante="primaria" tipo="submit">
+            Proximo
+          </Botao>
+          {/* </Link> */}
         </div>
       </Col>
     </Row>
 
-  </div>);
+  </form>);
 };
 
 export default DadosPessoais;
