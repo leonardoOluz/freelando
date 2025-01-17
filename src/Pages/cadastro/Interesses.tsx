@@ -3,9 +3,10 @@ import { Botao } from "../../componentes/Botao/Botao";
 import styled from "@emotion/styled";
 import { IOpcoes } from "../../interface/IU";
 import GrupoBotaoRadio from "../../componentes/GrupoBotaoRadio/GrupoBotaoRadio";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
 import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
+import { useEffect } from "react";
 
 
 const opcoes: IOpcoes[] = [
@@ -42,7 +43,14 @@ const FieldsetEstilizado = styled.fieldset`
 `;
 
 const Interesses = () => {
-  const { setInteresse, usuario } = useCadastroUsuarioContext();
+  const { setInteresse, usuario, possuiPerfil } = useCadastroUsuarioContext();
+  const navegar = useNavigate();
+
+  useEffect(() => {
+    if (!possuiPerfil()) {
+      navegar("/cadastro")
+    }
+  }, [possuiPerfil, navegar])
 
   return (<div>
     <TipografiaCard titulo="Crie seu cadastro" subTitulo="Qual a área de interesse?" />
@@ -67,7 +75,7 @@ const Interesses = () => {
       <Col md={6} sm={6}>
         <div style={{ textAlign: "right" }}>
           <Link to="/cadastro/dados-pessoais">
-            <Botao variante="primaria" children="Próximo" />
+            <Botao variante="primaria" children="Próximo" btnAtivo={!usuario.interesse} />
           </Link>
         </div>
       </Col>

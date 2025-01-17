@@ -1,11 +1,12 @@
 import { Col, Row } from "react-grid-system";
 import { Botao } from "../../componentes/Botao/Botao";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CampoTexto } from "../../componentes/CampoTexto/CampoTexo";
 import { ListaSuspensa } from "../../componentes/ListaSuspensa/ListaSuspensa";
 import { IEstadosBrasileiros } from "../../interface/IU";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
 import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
+import { useEffect } from "react";
 
 const estadosBrasileiros: IEstadosBrasileiros[] = [
   { "text": "Acre", "value": "AC" },
@@ -39,13 +40,26 @@ const estadosBrasileiros: IEstadosBrasileiros[] = [
 
 const DadosPessoais = () => {
   const { usuario, setNomeCompleto, setEmail, setCidade,
-    setSenha, setSenhaConfirmada, setUf, submeterUsuario } = useCadastroUsuarioContext();
+    setSenha, setSenhaConfirmada, setUf, submeterUsuario,
+    possuiInteresse, erro } = useCadastroUsuarioContext();
+  const navegar = useNavigate();
+
+  useEffect(() => {
+    if (!possuiInteresse()) {
+      navegar("/cadastro/interesses");
+    }
+  },[navegar, possuiInteresse])
+
+  useEffect(() => {
+    if (erro) {
+      alert(erro)
+    }
+  }, [erro])
 
   const finalizarCadastro = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     submeterUsuario();
   }
-
 
   return (<form onSubmit={finalizarCadastro}>
     <TipografiaCard titulo="Freelando" descricao=" Crie seu perfil gratuitamente para começar a trabalhar com os melhores freelancers. Em seguida, você poderá dar mais detalhes sobre suas demandas e sobre sua forma de trabalho.
@@ -107,11 +121,9 @@ const DadosPessoais = () => {
       </Col>
       <Col lg={6} md={6} sm={6}>
         <div style={{ textAlign: 'right' }}>
-          {/* <Link to="/cadastro/concluido"> */}
           <Botao variante="primaria" tipo="submit">
             Proximo
           </Botao>
-          {/* </Link> */}
         </div>
       </Col>
     </Row>

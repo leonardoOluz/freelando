@@ -13,6 +13,10 @@ export const CadastroUsuarioContext = createContext<{
   setSenha: (senha: string) => void;
   setSenhaConfirmada: (senhaConfirmada: string) => void;
   submeterUsuario: () => void;
+  possuiPerfil: () => boolean;
+  possuiInteresse: () => boolean;
+  cadastroConcluido: () => void;
+  erro: string
 }>({
   usuario: usuarioInicial,
   setPerfil: () => { },
@@ -24,4 +28,8 @@ export const CadastroUsuarioContext = createContext<{
   setSenha: () => { },
   setSenhaConfirmada: () => { },
   submeterUsuario: () => { },
+  possuiPerfil: () => true,
+  possuiInteresse: () => true,
+  cadastroConcluido: () => { },
+  erro: ""
 })

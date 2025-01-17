@@ -4,6 +4,8 @@ import styled from "@emotion/styled";
 import { Botao } from "../../componentes/Botao/Botao";
 import { Link } from "react-router-dom";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
+import { useEffect } from "react";
+import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
 
 const ImagemEstilizada = styled.img`
     width: 100%;
@@ -11,6 +13,12 @@ const ImagemEstilizada = styled.img`
 `;
 
 const Concluido = () => {
+  const { cadastroConcluido } = useCadastroUsuarioContext();
+
+  useEffect(() => {
+    cadastroConcluido();
+  }, [cadastroConcluido])
+
   return (<div>
     <TipografiaCard titulo="Seu perfil está completo!" descricao="  Agora é só começar a se conectar com os melhores freelancers do mercado!
     "/>
