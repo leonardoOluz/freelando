@@ -5,8 +5,8 @@ import { IOpcoes } from "../../interface/IU";
 import GrupoBotaoRadio from "../../componentes/GrupoBotaoRadio/GrupoBotaoRadio";
 import { Link, useNavigate } from "react-router-dom";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
-import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
 import { useEffect } from "react";
+import { useCadastroUsuarioContext } from "../../hooks/useCadastroUsuarioContext";
 
 
 const opcoes: IOpcoes[] = [

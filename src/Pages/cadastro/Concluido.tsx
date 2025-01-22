@@ -5,7 +5,7 @@ import { Botao } from "../../componentes/Botao/Botao";
 import { Link } from "react-router-dom";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
 import { useEffect } from "react";
-import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
+import { useCadastroUsuarioContext } from "../../hooks/useCadastroUsuarioContext";
 
 const ImagemEstilizada = styled.img`
     width: 100%;

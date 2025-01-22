@@ -5,8 +5,8 @@ import { CampoTexto } from "../../componentes/CampoTexto/CampoTexo";
 import { ListaSuspensa } from "../../componentes/ListaSuspensa/ListaSuspensa";
 import { IEstadosBrasileiros } from "../../interface/IU";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
-import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
 import { useEffect } from "react";
+import { useCadastroUsuarioContext } from "../../hooks/useCadastroUsuarioContext";
 
 const estadosBrasileiros: IEstadosBrasileiros[] = [
   { "text": "Acre", "value": "AC" },
