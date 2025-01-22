@@ -5,7 +5,7 @@ import imgFreela from "./assets/freela.png";
 import { Link } from "../../componentes/Link/Link";
 import { Link as RouterLink } from "react-router-dom";
 import TipografiaCard from "../../componentes/TipografiaCard/TipografiaCard";
-import { useCadastroUsuarioContext } from "../../contexto/useCadastroUsuarioContext";
+import { useCadastroUsuarioContext } from "../../hooks/useCadastroUsuarioContext";
 
 const SelecaoCliente = () => {
   const { setPerfil } = useCadastroUsuarioContext();

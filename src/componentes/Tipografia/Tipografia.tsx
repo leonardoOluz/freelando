@@ -75,7 +75,7 @@ const estilos: IEstilos = {
   body2: `
     font-size: 1.6rem;
     font-weight: 400;
-    line-height: 2rem;
+    line-height: 1.95rem;
   `,
   body2Bold: `
   font-size: 1.6rem;

@@ -10,6 +10,7 @@ interface PropsCadastroUsuarioProvider {
 }
 export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvider) => {
   const [usuario, setUsuario] = useState<IUsuario>(usuarioInicial)
+  const [erro, setErro] = useState<string>("")
   const navegar = useNavigate();
 
   const setPerfil = (perfil: string) => {
@@ -58,6 +59,7 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
   }
 
   const setCidade = (cidade: string) => {
+    setErro("");
     setUsuario((prev) => {
       return {
         ...prev,
@@ -67,6 +69,7 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
   }
 
   const setSenha = (senha: string) => {
+    setErro("");
     setUsuario((prev) => {
       return {
         ...prev,
@@ -85,8 +88,30 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
   }
 
   const submeterUsuario = () => {
+    if (usuario.cidade.length < 3) {
+      setErro("Verifique a cidade");
+      return
+    }
+
+    if (usuario.senha.length < 8) {
+      setErro("Verifique a senha");
+      return
+    }
+
     console.log(usuario);
     navegar("/cadastro/concluido");
+    setErro("")
+  }
+
+  const possuiPerfil = (): boolean => {
+    return !!usuario.perfil
+  }
+
+  const possuiInteresse = (): boolean => {
+    return !!usuario.interesse
+  }
+
+  const cadastroConcluido = () => {
     setUsuario(usuarioInicial)
   }
 
@@ -100,7 +125,11 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
     setEmail,
     setSenha,
     setSenhaConfirmada,
-    submeterUsuario
+    submeterUsuario,
+    possuiPerfil,
+    possuiInteresse,
+    cadastroConcluido,
+    erro 
   }
 
   return (

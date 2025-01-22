@@ -4,6 +4,7 @@ interface PropsBotao {
   children: React.ReactNode;
   variante: 'primaria' | 'secundaria';
   tipo?: "button" | "submit";
+  btnAtivo?: boolean;
 };
 
 const BotaoPrimarioEstilizado = styled.button`
@@ -48,9 +49,9 @@ const BotaoSecundarioEstilizado = styled.button`
     }
 `;
 
-export const Botao = ({ children, variante = 'primaria', tipo = "button" }: PropsBotao) => {
+export const Botao = ({ children, variante = 'primaria', tipo = "button", btnAtivo = false }: PropsBotao) => {
   if (variante === 'primaria') {
-    return <BotaoPrimarioEstilizado type={tipo}>
+    return <BotaoPrimarioEstilizado type={tipo} disabled={btnAtivo} >
       {children}
     </BotaoPrimarioEstilizado>
   }

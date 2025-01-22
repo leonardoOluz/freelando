@@ -78,19 +78,20 @@ export const ListaSuspensa = ({ titulo, opcoes, handleChange }: PropsListaSuspen
       case "Enter":
         evento.preventDefault();
         if (focoAtivo) {
-          setFocoSelecionado(opcoes[focoAtivo].text)
-          setFocoAtivo(null)
-          setIsOpen(false)
+          setFocoSelecionado(opcoes[focoAtivo].text);
+          handleChange(opcoes[focoAtivo].text);
+          setFocoAtivo(null);
+          setIsOpen(false);
         }
         break;
       case "Escape":
         evento.preventDefault();
-        setFocoAtivo(null)
-        setIsOpen(false)
+        setFocoAtivo(null);
+        setIsOpen(false);
         break;
       case "Tab":
-        setIsOpen(false)
-        setFocoAtivo(null)
+        setIsOpen(false);
+        setFocoAtivo(null);
         break;
       default:
         break;
