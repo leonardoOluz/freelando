@@ -4,7 +4,7 @@ export const usuarioInicial: IUsuario = {
   cidade: "",
   email: "",
   interesse: "",
-  nomeCompleto: "",
+  nome: "",
   perfil: "",
   senha: "",
   senhaConfirmada: "",

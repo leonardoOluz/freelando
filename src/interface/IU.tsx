@@ -51,7 +51,7 @@ export interface IOpcoes {
 export interface IUsuario {
   perfil: string;
   interesse: string;
-  nomeCompleto: string;
+  nome: string;
   uf: string;
   cidade: string;
   email: string;

@@ -1,11 +1,10 @@
 import styled from "@emotion/styled";
 import { Tipografia } from "../../../componentes/Tipografia/Tipografia";
-import ListaHabilidadeTags from "./ListaHabilidadeTags/ListaHabilidadeTags";
 import ItemHabilidadeTags from "./ListaHabilidadeTags/ItemHabilidadeTags/ItemHabilidadeTags";
 import BotaoHabilidadeTags from "./BotaoHabilidadeTags/BotaoHabilidadeTags";
+import ListaHabilidadeTags from "./ListaHabilidadeTags/ListaHabilidadeTags";
 
-const SessaoStyled = styled.section`
-  
+const SessaoStyled = styled.section`  
   text-align: center;
 `;
 
@@ -19,7 +18,7 @@ const HabilidadesTags = ({ subTitulo, tags }: PropsOHabilidadesTags) => {
     <Tipografia componente="h2" variante="h2">
       {subTitulo}
     </Tipografia>
-    <ListaHabilidadeTags>
+    <ListaHabilidadeTags >
       {tags.map((tag, index) => (
         <ItemHabilidadeTags key={index}>
           <BotaoHabilidadeTags type="button">

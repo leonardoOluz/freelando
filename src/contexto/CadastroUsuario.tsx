@@ -3,6 +3,7 @@ import { CadastroUsuarioContext } from "./CadastroUsuarioContext";
 import { usuarioInicial } from "./usuarioInicial";
 import { IUsuario } from "../interface/IU";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 interface PropsCadastroUsuarioProvider {
@@ -35,7 +36,7 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
     setUsuario((prev) => {
       return {
         ...prev,
-        nomeCompleto
+        nome: nomeCompleto
       }
     })
   }
@@ -79,6 +80,7 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
   }
 
   const setSenhaConfirmada = (senhaConfirmada: string) => {
+    setErro("");
     setUsuario((prev) => {
       return {
         ...prev,
@@ -98,9 +100,20 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
       return
     }
 
-    console.log(usuario);
-    navegar("/cadastro/concluido");
-    setErro("")
+    if (usuario.senha != usuario.senhaConfirmada) {
+      setErro("Verifique as senhas");
+      return
+    }
+
+    axios.post("http://localhost:8080/auth/register", usuario)
+      .then(() => {
+        navegar("/cadastro/concluido");
+        setErro("")
+      })
+      .catch((erro) => {
+        console.log(erro)
+      })
+
   }
 
   const possuiPerfil = (): boolean => {
@@ -129,7 +142,7 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
     possuiPerfil,
     possuiInteresse,
     cadastroConcluido,
-    erro 
+    erro
   }
 
   return (
