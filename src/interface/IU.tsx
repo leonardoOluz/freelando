@@ -58,3 +58,9 @@ export interface IUsuario {
   senha: string;
   senhaConfirmada: string;
 }
+
+
+export interface IData {
+  access_token: string;
+  refresh_token: string;
+}

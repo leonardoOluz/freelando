@@ -1,7 +1,6 @@
 import { Col, Container, Row } from "react-grid-system";
 import { Cabecalho } from "../componentes/Cabecalho/Cabecalho";
 import { FreelandoLogo } from "../componentes/Icones/FreelandoLogo";
-import { Link } from "../componentes/Link/Link";
 import { Rodape } from "../componentes/Rodape/Rodape";
 import { Tipografia } from "../componentes/Tipografia/Tipografia";
 import { ListaInline } from "../componentes/ListaInline/ListaInline";
@@ -10,22 +9,42 @@ import { IconeWhatsApp } from "../componentes/Icones/IconeWhatsApp";
 import { IconeTwitch } from "../componentes/Icones/IconeTwitch";
 import { IconeInstagram } from "../componentes/Icones/IconeInstagram";
 import { IconeTwitter } from "../componentes/Icones/IconeTwiter";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 interface LayoutBaseProps {
   children?: React.ReactNode
 }
 
-const LayoutBase = ({children}: LayoutBaseProps) => {
+const LayoutBase = ({ children }: LayoutBaseProps) => {
   return (<>
     <Cabecalho>
       <Container>
         <Row style={{ alignItems: "center" }}>
           <Col>
-            <FreelandoLogo />
+            <Link
+              to="/"
+              style={{
+                color: "rgba(245, 245, 245, 1)",
+                fontSize: "2rem",
+                textDecoration: "none",
+                lineHeight: "2.4rem",
+                fontWeight: "400"
+              }} >
+              <FreelandoLogo />
+            </Link>
           </Col>
           <Col style={{ textAlign: "right" }}>
-            <Link>Login</Link>
+            <Link
+              to="/login"
+              style={{
+                color: "rgba(245, 245, 245, 1)",
+                fontSize: "2rem",
+                textDecoration: "none",
+                lineHeight: "2.4rem",
+                fontWeight: "400"
+              }} >
+              Login
+            </Link>
           </Col>
         </Row>
       </Container>

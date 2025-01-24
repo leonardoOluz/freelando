@@ -3,7 +3,7 @@ import { CadastroUsuarioContext } from "./CadastroUsuarioContext";
 import { usuarioInicial } from "./usuarioInicial";
 import { IUsuario } from "../interface/IU";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import http from "../http";
 
 
 interface PropsCadastroUsuarioProvider {
@@ -105,7 +105,7 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
       return
     }
 
-    axios.post("http://localhost:8080/auth/register", usuario)
+    http.post("/auth/register", usuario)
       .then(() => {
         navegar("/cadastro/concluido");
         setErro("")
@@ -113,7 +113,6 @@ export const CadastroUsuarioProvider = ({ children }: PropsCadastroUsuarioProvid
       .catch((erro) => {
         console.log(erro)
       })
-
   }
 
   const possuiPerfil = (): boolean => {

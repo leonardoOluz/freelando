@@ -1,12 +1,13 @@
 import { createBrowserRouter } from "react-router";
 import SelecaoCliente from "../Pages/cadastro/SelecaoCliente";
-import LayoutBaseCadastro from "../Pages/cadastro/LayoutBaseCadastro";
 import LayoutBase from "../Pages/LayoutBase";
 import Interesses from "../Pages/cadastro/Interesses";
 import DadosPessoais from "../Pages/cadastro/DadosPessoais";
 import Concluido from "../Pages/cadastro/Concluido";
 import Home from "../Pages/Home/Home";
 import NotFound from "../Pages/NotFound/NotFound";
+import LayoutBaseCard from "../Pages/LayoutBaseCard";
+import Login from "../Pages/Login/Login";
 
 
 export const router = createBrowserRouter([
@@ -21,7 +22,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "cadastro",
-        element: <LayoutBaseCadastro />,
+        element: <LayoutBaseCard />,
         children: [
           {
             path: "",
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
           }
         ]
       },
+      {
+        path: "login",
+        element: <Login />
+      }
     ],
   },
 ]);

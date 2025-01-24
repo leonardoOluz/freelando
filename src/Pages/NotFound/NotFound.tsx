@@ -5,7 +5,7 @@ import { Botao } from "../../componentes/Botao/Botao";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import LayoutBase from "../LayoutBase";
-import LayoutBaseCadastro from "../cadastro/LayoutBaseCadastro";
+import LayoutBaseCard from "../LayoutBaseCard";
 
 const ImgNotFound = styled.img`
   object-fit: cover;
@@ -15,7 +15,7 @@ const ImgNotFound = styled.img`
 const NotFound = () => {
   return (
     <LayoutBase>
-      <LayoutBaseCadastro>
+      <LayoutBaseCard>
         <Row>
           <Col sm={12} md={12} lg={12} style={{ textAlign: "center" }}>
             <Tipografia componente="h1" variante="h1">{"Ops... Página não encontrada :("}</Tipografia>
@@ -28,7 +28,7 @@ const NotFound = () => {
             </Link>
           </Col>
         </Row>
-      </LayoutBaseCadastro>
+      </LayoutBaseCard>
     </LayoutBase>
   )
 };

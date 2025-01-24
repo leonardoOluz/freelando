@@ -48,7 +48,7 @@ const DadosPessoais = () => {
     if (!possuiInteresse()) {
       navegar("/cadastro/interesses");
     }
-  },[navegar, possuiInteresse])
+  }, [navegar, possuiInteresse])
 
   useEffect(() => {
     if (erro) {
@@ -67,7 +67,7 @@ const DadosPessoais = () => {
     <Row>
       <Col>
         <CampoTexto
-          valor={usuario.nomeCompleto}
+          valor={usuario.nome}
           onChange={setNomeCompleto}
           titulo="Nome Completo"
         />
@@ -101,15 +101,21 @@ const DadosPessoais = () => {
     <Row>
       <Col lg={6} md={6} sm={6}>
         <CampoTexto
+          tipo="password"
           valor={usuario.senha}
           onChange={setSenha}
-          titulo="Senha" />
+          titulo="Senha"
+          tipoSenha
+        />
       </Col>
       <Col lg={6} md={6} sm={6}>
         <CampoTexto
           valor={usuario.senhaConfirmada}
           onChange={setSenhaConfirmada}
-          titulo="Repita a Senha" />
+          titulo="Repita a Senha"
+          tipoSenha
+          tipo="password"
+        />
       </Col>
     </Row>
 

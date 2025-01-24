@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export const SessaoUsuarioContext = createContext<{
     usuarioLogado: boolean,
-    login: () => void,
+    login: (email: string, senha: string) => void,
     logout: () => void,
     perfil: ObjectConstructor
 }>({
