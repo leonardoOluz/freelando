@@ -1,8 +1,10 @@
 import styled from "@emotion/styled";
 
-const ListaFiguresStyled = styled.ul`
+const ListaHome = styled.ul`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 `;
 
-export default ListaFiguresStyled;
+export default ListaHome;

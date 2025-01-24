@@ -1,9 +1,13 @@
 import { Col, Container, Row } from "react-grid-system"
-import { Card } from "../../componentes/Card/Card"
 import { Outlet } from "react-router-dom";
-import { CadastroUsuarioProvider } from "../../contexto/CadastroUsuario";
+import { CadastroUsuarioProvider } from "../contexto/CadastroUsuario";
+import { Card } from "../componentes/Card/Card";
 
-const LayoutBaseCadastro = () => {
+interface LayoutBaseCadastroProps {
+  children?: React.ReactNode
+}
+
+const LayoutBaseCard = ({children}: LayoutBaseCadastroProps) => {
   return (
     <Container>
       <CadastroUsuarioProvider>
@@ -11,6 +15,7 @@ const LayoutBaseCadastro = () => {
           <Col xxxl={6} xxl={6} xl={6} xs={6} lg={6} md={8} sm={12} style={{ margin: "8rem 0" }}>
             <Card>
               <Outlet />
+              {children}
             </Card>
           </Col>
         </Row>
@@ -19,4 +24,4 @@ const LayoutBaseCadastro = () => {
   )
 };
 
-export default LayoutBaseCadastro;
+export default LayoutBaseCard;

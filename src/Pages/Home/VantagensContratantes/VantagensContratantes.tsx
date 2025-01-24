@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
-import FigureVantagens from "./FigureVantagens/FigureVantagens";
-import qualificadosImg from "../assets/qualificados.png"
-import especialidadesImg from "../assets/especialidadesFrame.png"
-import agilidadeImg from "../assets/agilidade.png"
-import seguranca from "../assets/seguranca.png"
-import ListaFiguresStyled from "./ListaFigures/ListaFigures";
-import ItemFiguresStyled from "./ListaFigures/ItemFigures/ItemFigures";
 import { Tipografia } from "../../../componentes/Tipografia/Tipografia";
+import AtendimentoAgilidade from "../svg/AtendimentoAgilidade";
+import ProfissionaisQualificados from "../svg/ProfissionaisQualificados";
+import SimplicidadeSegurancao from "../svg/SimplicidadeSegurancao";
+import MultiplasEspecialidades from "../svg/MultiplasEspecialidades";
+import ListaHome from "../ListaHome/ListaHome";
+import FigureHome from "../FigureHome/FigureHome";
+import ItemHome from "../ListaHome/ItemHome/ItemHome";
 
 const SessaoStyled = styled.section`
   text-align: center;
@@ -23,28 +23,28 @@ const VantagensContratantes = ({ subTitulo }: PropsIVantagensContratantes) => {
       {subTitulo}
     </Tipografia>
 
-    <ListaFiguresStyled>
-      <ItemFiguresStyled>
-        <FigureVantagens>
-          <img src={qualificadosImg} alt="" />
-        </FigureVantagens>
-      </ItemFiguresStyled>
-      <ItemFiguresStyled>
-        <FigureVantagens>
-          <img src={especialidadesImg} alt="" />
-        </FigureVantagens>
-      </ItemFiguresStyled>
-      <ItemFiguresStyled>
-        <FigureVantagens>
-          <img src={agilidadeImg} alt="" />
-        </FigureVantagens>
-      </ItemFiguresStyled>
-      <ItemFiguresStyled>
-        <FigureVantagens>
-          <img src={seguranca} alt="" />
-        </FigureVantagens>
-      </ItemFiguresStyled>
-    </ListaFiguresStyled>
+    <ListaHome>
+      <ItemHome>
+        <FigureHome>
+          <ProfissionaisQualificados />
+        </FigureHome>
+      </ItemHome>
+      <ItemHome>
+        <FigureHome>
+          <MultiplasEspecialidades />
+        </FigureHome>
+      </ItemHome>
+      <ItemHome>
+        <FigureHome>
+          <AtendimentoAgilidade />
+        </FigureHome>
+      </ItemHome>
+      <ItemHome>
+        <FigureHome>
+          <SimplicidadeSegurancao />
+        </FigureHome>
+      </ItemHome>
+    </ListaHome>
 
   </SessaoStyled>)
 };

@@ -4,7 +4,6 @@ import { Botao } from "../Botao/Botao";
 import { Link } from "react-router-dom";
 
 const SessaoBannerStyled = styled.section`
-  width: 100%;
   display: flex;
   padding: ${({ theme }) => theme.espacamentos.s};
   color: ${({ theme }) => theme.cores.primarias.b};

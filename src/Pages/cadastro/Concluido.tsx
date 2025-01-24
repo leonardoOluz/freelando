@@ -27,7 +27,7 @@ const Concluido = () => {
     </figure>
     <Row style={{ textAlign: "center" }}>
       <Col md={12} sm={12}>
-        <Link to="..">
+        <Link to="/">
           <Botao variante="secundaria" children="Voltar para a home" />
         </Link>
       </Col>

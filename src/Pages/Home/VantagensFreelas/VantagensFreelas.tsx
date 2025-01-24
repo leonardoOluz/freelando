@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import { Tipografia } from "../../../componentes/Tipografia/Tipografia";
-import ListaFreelas from "./ListaFreelas/ListaFreelas";
-import ItemFreelas from "./ListaFreelas/ItemFreelas/ItemFreelas";
-import FigureFreelas from "./FigureFreelas/FigureFreelas";
-import clienteVerificados from "../assets/clienteVerificados.png"
-import atendimentoAgilidade from "../assets/atendimentoAgilidade.png"
-import projetoInteressantes from "../assets/projetoInteressantes.png"
-import remuneracaoSupervisionada from "../assets/remuneracaoSupervisionada.png"
+import ClienteVerificados from "../svg/ClienteVerificados";
+import AtendimentoAgilidadeFreela from "../svg/AtendimentoAgilidadeFreela";
+import ProjetosInteressantes from "../svg/ProjetosInteressantes";
+import RemunercaoSupervisionada from "../svg/RemunercaoSupervisionada";
+import ListaHome from "../ListaHome/ListaHome";
+import ItemHome from "../ListaHome/ItemHome/ItemHome";
+import FigureHome from "../FigureHome/FigureHome";
 
 const SessaoStyled = styled.section`
  text-align: center;  
@@ -21,28 +21,29 @@ const VantagensFreelas = ({ subTitulo }: PropsIVantagensFreelas) => {
     <Tipografia componente="h2" variante="h2">
       {subTitulo}
     </Tipografia>
-    <ListaFreelas>
-      <ItemFreelas>
-        <FigureFreelas>
-          <img src={clienteVerificados} alt="icone de escrito cliente verificado"/>
-        </FigureFreelas>
-      </ItemFreelas>
-      <ItemFreelas>
-        <FigureFreelas>
-          <img src={atendimentoAgilidade} alt="icone de escrito cliente verificado"/>
-        </FigureFreelas>
-      </ItemFreelas>
-      <ItemFreelas>
-        <FigureFreelas>
-          <img src={projetoInteressantes} alt="icone de escrito cliente verificado"/>
-        </FigureFreelas>
-      </ItemFreelas>
-      <ItemFreelas>
-        <FigureFreelas>
-          <img src={remuneracaoSupervisionada} alt="icone de escrito cliente verificado"/>
-        </FigureFreelas>
-      </ItemFreelas>
-    </ListaFreelas>
+
+    <ListaHome>
+      <ItemHome>
+        <FigureHome>
+          <ClienteVerificados />
+        </FigureHome>
+      </ItemHome>
+      <ItemHome>
+        <FigureHome>
+          <AtendimentoAgilidadeFreela />
+        </FigureHome>
+      </ItemHome>
+      <ItemHome>
+        <FigureHome>
+          <ProjetosInteressantes />
+        </FigureHome>
+      </ItemHome>
+      <ItemHome>
+        <FigureHome>
+          <RemunercaoSupervisionada />
+        </FigureHome>
+      </ItemHome>
+    </ListaHome>
   </SessaoStyled>)
 };
 

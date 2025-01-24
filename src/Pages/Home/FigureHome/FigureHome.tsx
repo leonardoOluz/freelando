@@ -1,17 +1,17 @@
 import styled from "@emotion/styled";
 
 const FigureStyled = styled.figure`
-  
+margin: 0;
 `;
 
 interface PropsIFigureVantagens {
   children: React.ReactNode
 }
 
-const FigureVantagens = ({ children }: PropsIFigureVantagens) => {
+const FigureHome = ({ children }: PropsIFigureVantagens) => {
   return (<FigureStyled>
     {children}
   </FigureStyled>)
 };
 
-export default FigureVantagens;
+export default FigureHome;
