@@ -8,6 +8,7 @@ import Home from "../Pages/Home/Home";
 import NotFound from "../Pages/NotFound/NotFound";
 import LayoutBaseCard from "../Pages/LayoutBaseCard";
 import Login from "../Pages/Login/Login";
+import Perfil from "../Pages/Perfil/Perfil";
 
 
 export const router = createBrowserRouter([
@@ -45,6 +46,9 @@ export const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />
+      },{
+        path: "meu-perfil",
+        element: <Perfil/>
       }
     ],
   },
