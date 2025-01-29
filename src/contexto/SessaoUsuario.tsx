@@ -1,20 +1,25 @@
 import { SessaoUsuarioContext } from "./SessaoUsuarioContext"
 import http from "../http"
-import { IData } from "../interface/IU"
+import { IData, IUsuario } from "../interface/IU"
 import { ArmazenadorToken } from "../utils/ArmazenadorToken"
+import { useState } from "react"
+import { usuarioInicial } from "./usuarioInicial"
 
 interface IPropsSessaoUsuarioProvider {
   children: React.ReactNode
 }
 
 export const SessaoUsuarioProvider = ({ children }: IPropsSessaoUsuarioProvider) => {
+  const [usuarioLogado, setUsuarioLogado] = useState<boolean>(!!ArmazenadorToken.acessToken);
+  const [perfil, setPerfil] = useState<IUsuario>(usuarioInicial);
 
-  const login = (email: string, senha: string) => {
+
+  const login = async (email: string, senha: string) => {
     if (email.length < 3 || senha.length < 3) {
       alert("verifique os campos obrigatorios")
       return
     }
-    http.post<IData>("/auth/login", {
+    await http.post<IData>("/auth/login", {
       email,
       senha
     })
@@ -23,15 +28,34 @@ export const SessaoUsuarioProvider = ({ children }: IPropsSessaoUsuarioProvider)
           resposta.data.access_token,
           resposta.data.refresh_token
         )
+        setUsuarioLogado(true);
       })
-      .catch((erro) => console.error(erro))
+      .catch((erro) => {
+        console.error(erro)
+      })
+  }
+
+  const profile = async () => {
+    await http.get<IUsuario>("profile")
+      .then(resposta => {
+        setPerfil(resposta.data)
+      })
+      .then(erro => console.error(erro))
+  }
+
+  const logout = () => {
+    ArmazenadorToken.efetuarLogout();
+    setUsuarioLogado(false);
+    setPerfil(usuarioInicial);
   }
 
   const value = {
-    usuarioLogado: false,
+    usuarioLogado,
     login,
-    logout: () => null,
-    perfil: Object
+    logout,
+    perfil,
+    setPerfil,
+    profile
   }
   return (
     <SessaoUsuarioContext.Provider value={value}>

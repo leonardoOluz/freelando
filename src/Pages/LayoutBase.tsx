@@ -10,17 +10,22 @@ import { IconeTwitch } from "../componentes/Icones/IconeTwitch";
 import { IconeInstagram } from "../componentes/Icones/IconeInstagram";
 import { IconeTwitter } from "../componentes/Icones/IconeTwiter";
 import { Link, Outlet } from "react-router-dom";
+import { useSessaoUsuarioContext } from "../hooks/useSessaoUsuarioContext";
 
 interface LayoutBaseProps {
   children?: React.ReactNode
 }
 
 const LayoutBase = ({ children }: LayoutBaseProps) => {
+  const { usuarioLogado, logout } = useSessaoUsuarioContext()
+
+
+
   return (<>
     <Cabecalho>
       <Container>
         <Row style={{ alignItems: "center" }}>
-          <Col>
+          <Col sm={8} md={8} lg={8}>
             <Link
               to="/"
               style={{
@@ -33,19 +38,51 @@ const LayoutBase = ({ children }: LayoutBaseProps) => {
               <FreelandoLogo />
             </Link>
           </Col>
-          <Col style={{ textAlign: "right" }}>
-            <Link
-              to="/login"
-              style={{
-                color: "rgba(245, 245, 245, 1)",
-                fontSize: "2rem",
-                textDecoration: "none",
-                lineHeight: "2.4rem",
-                fontWeight: "400"
-              }} >
-              Login
-            </Link>
-          </Col>
+          {usuarioLogado
+            ? (<>
+              <Col sm={4} md={4} lg={4} style={{}}>
+                  <Link
+                    to="/meu-perfil"
+                    style={{
+                      color: "rgba(245, 245, 245, 1)",
+                      fontSize: "2rem",
+                      textDecoration: "none",
+                      lineHeight: "2.4rem",
+                      fontWeight: "400"
+                    }} >
+                    Meu Perfil
+                  </Link>
+                  <Link
+                    onClick={() => {
+                      logout();
+                    }}
+                    to="/"
+                    style={{
+                      paddingLeft: "2rem",
+                      color: "rgba(245, 245, 245, 1)",
+                      fontSize: "2rem",
+                      textDecoration: "none",
+                      lineHeight: "2.4rem",
+                      fontWeight: "400"
+                    }} >
+                    Logout
+                  </Link>
+              </Col>
+            </>
+            )
+            : <Col style={{ textAlign: "right" }}>
+              <Link
+                to="/login"
+                style={{
+                  color: "rgba(245, 245, 245, 1)",
+                  fontSize: "2rem",
+                  textDecoration: "none",
+                  lineHeight: "2.4rem",
+                  fontWeight: "400"
+                }} >
+                Login
+              </Link>
+            </Col>}
         </Row>
       </Container>
     </Cabecalho>

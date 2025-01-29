@@ -3,8 +3,8 @@ import { Tipografia } from "../../componentes/Tipografia/Tipografia";
 import { Card } from "../../componentes/Card/Card";
 import mouseImg from "../../assets/mouse.png";
 import { CampoTexto } from "../../componentes/CampoTexto/CampoTexo";
-import { Link } from "react-router-dom";
-import { Botao } from "../../componentes/Botao/Botao";
+import { Link, useNavigate } from "react-router-dom";
+import { Botao } from   "../../componentes/Botao/Botao";
 import { useState } from "react";
 import { useSessaoUsuarioContext } from "../../hooks/useSessaoUsuarioContext";
 
@@ -12,10 +12,14 @@ const Login = () => {
   const [senha, setSenha] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const { login } = useSessaoUsuarioContext();
+   const navegar = useNavigate();
 
-  const tentarEfetuarLogin = async (event: React.FormEvent) => {
+  const tentarEfetuarLogin = (event: React.FormEvent) => {
     event.preventDefault();
     login(email, senha);
+      setSenha("");
+      setEmail("");
+      navegar("/");
   }
 
   return (

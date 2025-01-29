@@ -57,6 +57,7 @@ export interface IUsuario {
   email: string;
   senha: string;
   senhaConfirmada: string;
+  userId?: string
 }
 
 
